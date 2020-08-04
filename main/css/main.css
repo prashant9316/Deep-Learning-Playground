@@ -1,0 +1,110 @@
+.option {
+    float: right;
+    display: block;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.optimize-button {
+    display: inline-block;
+    margin-right: 10px;
+    height: 40px;
+    width: 120px;
+    border-radius: 15px;
+    background-color: #00D9FF;
+    color: #000;
+    font-family: Calibri;
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+    border: none;
+}
+
+.train-button {
+    height: 40px;
+    width: 120px;
+    border-radius: 15px;
+    background-color: #21DB9E;
+    color: #000;
+    font-family: Calibri;
+    font-size: 22px;
+    line-height: 28px;
+    border: none;
+}
+
+
+/* Styling of the */
+
+.conv-layer {
+    position: relative;
+    height: 50px;
+    width: max-content;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #757575;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.text-box {
+    color: #000;
+    font-family: Calibri;
+    font-size: 28px;
+    text-align: center;
+}
+
+.layer-name {
+    float: left;
+    height: 30px;
+    width: 150px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #FFF;
+    display: block;
+    margin-right: 10px;
+}
+
+.layer-property-1 {
+    float: left;
+    height: 30px;
+    width: 94px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    background-color: #FFF;
+    display: block;
+}
+
+.layer-property-2 {
+    float: left;
+    display: block;
+    padding: 10px;
+    margin-right: 10px;
+    height: 30px;
+    width: 94px;
+    border-radius: 20px;
+    background-color: #FFF;
+}
+
+.layer-property-3 {
+    float: left;
+    display: block;
+    padding: 10px;
+    margin-right: 10px;
+    height: 30px;
+    width: 138px;
+    border-radius: 20px;
+    background-color: #FFF;
+}
+
+.layer-property-4 {
+    float: left;
+    display: block;
+    height: 30px;
+    padding: 10px;
+    width: 173px;
+    border-radius: 20px;
+    background-color: #FFF;
+}
