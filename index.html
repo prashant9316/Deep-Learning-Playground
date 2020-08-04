@@ -6,6 +6,8 @@
     <title>Deep Learning GUI</title>
     <link href="main/css/main.css" rel="stylesheet" type="text/css">
     <link href="main/css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -27,7 +29,7 @@
         <div class="model-name-text">CNN Builder</div>
     </div>
     <div class="option">
-        <button class="optimize-button">Optimize</button>
+        <button class="optimize-button" onclick="compile(layer_array, 6)">Optimize</button>
         <button class="train-button">Train</button>
     </div>
     <div class="conv-layer">
@@ -65,6 +67,7 @@
 
 </body>
 <footer>
+    <script src="main/js/compile.js"></script>
     <script src="main/js/index.js"></script>
     <script src="main/js/main.js"></script>
 </footer>
