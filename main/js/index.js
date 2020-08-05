@@ -1,3 +1,5 @@
+/* This is to make the navigation bar responsive*/
+
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
