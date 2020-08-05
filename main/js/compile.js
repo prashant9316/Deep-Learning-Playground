@@ -13,12 +13,16 @@ function compile(layer_array, length) {
             console.log('layer ' + String(i + 1) + ' is ' + layer_array.layers[i].layer[0]);
             if (layer_array.layers[i].layer[0] == 'conv2d') {
                 add_conv(model, layer_array.layers[i].layer);
+                addConvBlockUi();
             } else if (layer_array.layers[i].layer[0] == 'mp') {
                 add_mp(model, layer_array.layers[i].layer);
+                addMaxPoolBlockUi();
             } else if (layer_array.layers[i].layer[0] == 'flatten') {
                 add_flatten(model);
+                addFlattenBlockUi();
             } else if (layer_array.layers[i].layer[0] == 'dense') {
                 add_dense(model, layer_array.layers[i].layer);
+                addDenseBlockUi();
             } else if (layer_array.layers[i].layer[0] == 'batchNorm') {
                 add_batchnorm(model);
             } else {

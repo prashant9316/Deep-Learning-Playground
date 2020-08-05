@@ -48,6 +48,51 @@
     text-align: center;
 }
 
+
+/* MaxPool UI design*/
+
+.maxPool-layer {
+    height: 50px;
+    width: max-content;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #8A3030;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+
+/* Flatten UI design*/
+
+.flatten-layer {
+    height: 50px;
+    width: max-content;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #303C8A;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+
+/* Dense UI design */
+
+.dense-layer {
+    height: 50px;
+    width: max-content;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #361D7D;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
 .text-box {
     color: #000;
     font-family: Calibri;
