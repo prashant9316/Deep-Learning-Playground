@@ -35,7 +35,8 @@
 
 /* Styling of the */
 
-.conv-layer {
+.conv-layer,
+.first-layer {
     position: relative;
     height: 50px;
     width: max-content;

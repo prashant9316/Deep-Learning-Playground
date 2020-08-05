@@ -6,6 +6,7 @@
     <title>Deep Learning GUI</title>
     <link href="main/css/main.css" rel="stylesheet" type="text/css">
     <link href="main/css/style.css" rel="stylesheet" type="text/css">
+    <link href="main/css/layers.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -27,12 +28,28 @@
     </div>
     <div class="model-name-container">
         <div class="model-name-text">CNN Builder</div>
+
+        <div id="floating-menu">
+            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+            <div id="floating-menu-draggable">Layers</div>
+            <input class="menu-button conv2d-layer" type="button" value="Conv2D" onclick="addConvBlockUi()">
+            <input class="menu-button maxPool-layer" type="button" value="maxPool2D" onclick="addMaxPoolBlockUi()">
+            <input class="menu-button dropout-layer" type="button" value="Dropout" onclick="addDropoutBlockUi()">
+            <input class="menu-button batchNorm-layer" type="button" value="BatchNorm" onclick="addBatchNormBlockUi()">
+            <input class="menu-button flatten-layer" type="button" value="Flatten" onclick="addFlattenBlockUi()">
+            <input class="menu-button dense-layer" type="button" value="Dense" onclick="addDenseBlockUi()">
+        </div>
     </div>
     <div class="option">
         <button class="optimize-button" onclick="compile(layer_array, 6)">Optimize</button>
         <button class="train-button">Train</button>
     </div>
-    <div class="conv-layer">
+
+
+
+
+
+    <div class="first-layer">
         <div class="layer-name">
             <div class="text-box">
                 Conv2D
@@ -73,6 +90,7 @@
     <script src="main/js/compile.js"></script>
     <script src="main/js/index.js"></script>
     <script src="main/js/main.js"></script>
+    <script src="main/js/layers.js"></script>
 </footer>
 
 </html>

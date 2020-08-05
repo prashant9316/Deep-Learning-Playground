@@ -1,5 +1,6 @@
 var current_layer = 0;
 var layer_counter = 0;
+var lastLayer;
 var layer_array = {
     'layers': [
         { 'layer': ['conv2d', 32, 2, 'relu'] },
@@ -52,6 +53,7 @@ function addConvBlockUi() {
     </div>
 </div>
 </div>`);
+    lastLayer = "conv-layer";
 }
 
 function addMaxPoolBlockUi() {
@@ -71,7 +73,8 @@ function addMaxPoolBlockUi() {
                 RELU
             </div>
         </div>
-    </div>`)
+    </div>`);
+    lastLayer = 'maxPool-layer';
 }
 
 function addFlattenBlockUi() {
@@ -82,7 +85,8 @@ function addFlattenBlockUi() {
                     Flatten
                 </div>
             </div>
-        </div>`)
+        </div>`);
+    lastLayer = 'flatten-layer';
 }
 
 function addDenseBlockUi() {
@@ -103,7 +107,23 @@ function addDenseBlockUi() {
                 SOFTMAX
             </div>
         </div>
-    </div>`)
+    </div>`);
+    lastLayer = 'dense-layer';
 }
 
+function addDropoutBlockUi() {
+    console.log("Build in progress!");
+}
+
+function addBatchNormBlockUi() {
+    console.log("Build in progress!");
+}
+
+function removeBlockUi() {
+    container.remove(lastLayer);
+}
+
+function resetBlockUi() {
+    container.remove();
+}
 /*const model = compile(layer_array, 6);*/
