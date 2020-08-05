@@ -29,7 +29,7 @@ layer.innerHTML =
 
 container.append(layer);
 */
-function add_conv() {
+function addConvBlockUi() {
     container.append(`<div class="conv-layer">
     <div class="layer-name">
         <div class="text-box">
@@ -51,11 +51,59 @@ function add_conv() {
         RELU
     </div>
 </div>
-<div class="layer-property-4">
-    <div class="text-box">
-        32, 32, 3
-    </div>
-</div>
 </div>`);
 }
+
+function addMaxPoolBlockUi() {
+    container.append(`<div class="maxPool-layer">
+        <div class="layer-name">
+            <div class="text-box">
+                MaxPool2D
+            </div>
+        </div>
+        <div class="layer-property-1">
+            <div class="text-box">
+                 2
+            </div>
+        </div>
+        <div class="layer-property-2">
+            <div class="text-box">
+                RELU
+            </div>
+        </div>
+    </div>`)
+}
+
+function addFlattenBlockUi() {
+    container.append(`
+        <div class="flatten-layer">
+            <div class="layer-name">
+                <div class="text-box">
+                    Flatten
+                </div>
+            </div>
+        </div>`)
+}
+
+function addDenseBlockUi() {
+    container.append(`
+        <div class="dense-layer">
+        <div class="layer-name">
+            <div class="text-box">
+                Dense
+            </div>
+        </div>
+        <div class="layer-property-1">
+            <div class="text-box">
+                10
+            </div>
+        </div>
+        <div class="layer-property-3">
+            <div class="text-box">
+                SOFTMAX
+            </div>
+        </div>
+    </div>`)
+}
+
 /*const model = compile(layer_array, 6);*/
