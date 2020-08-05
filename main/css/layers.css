@@ -1,0 +1,41 @@
+#floating-menu {
+    height: max-content;
+    width: max-content;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #C8C8C8;
+    box-shadow: 8px 8px 4px 0 rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 9;
+    text-align: center;
+}
+
+#floating-menu-draggable {
+    padding: 10px;
+    cursor: move;
+    border-radius: 15px;
+    z-index: 10;
+    margin-bottom: 10px;
+    background-color: #2196F3;
+    color: #fff;
+}
+
+#floating-menu:active {
+    display: block;
+}
+
+.menu-button {
+    background-color: #FFF;
+    /* Green */
+    color: black;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto;
+    display: block;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
