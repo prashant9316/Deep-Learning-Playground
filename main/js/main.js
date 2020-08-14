@@ -1,5 +1,6 @@
 var current_layer = 0;
 var layer_counter = 0;
+var flattend = false;
 var lastLayer;
 var numLayers = 0;
 
@@ -43,6 +44,10 @@ layer.innerHTML =
 container.append(layer);
 */
 function addConvBlockUi() {
+    if (flattend == true) {
+        alert("Cannot add higher dimensional layers after flatten layer");
+        return;
+    }
     numLayers += 1;
     object.layers[0][String(numLayers)] = { layerName: "conv2D", filter: 64, kernel: 2, activation: "relu" };
     object.modelInfo = numLayers;
@@ -72,6 +77,10 @@ function addConvBlockUi() {
 }
 
 function addMaxPoolBlockUi() {
+    if (flattend == true) {
+        alert("Cannot add higher dimensional layers after flatten layer");
+        return;
+    }
     numLayers += 1;
     object.layers[0][String(numLayers)] = { layerName: "maxPool2D", kernel: 2 };
     object.modelInfo = numLayers;
@@ -96,6 +105,11 @@ function addMaxPoolBlockUi() {
 }
 
 function addFlattenBlockUi() {
+    if (flattend == true) {
+        alert("Cannot add higher dimensional layers after flatten layer");
+        return;
+    }
+    flattend = true;
     numLayers += 1;
     object.layers[0][String(numLayers)] = { layerName: "flatten" };
     object.modelInfo = numLayers;
@@ -111,6 +125,10 @@ function addFlattenBlockUi() {
 }
 
 function addDenseBlockUi() {
+    if (flattend == false) {
+        alert("The layer is not yet flattened!");
+        return;
+    }
     numLayers += 1;
     object.layers[0][String(numLayers)] = { layerName: "dense", units: 10, activation: "relu" };
     object.modelInfo = numLayers;
@@ -156,6 +174,10 @@ function addDropoutBlockUi() {
 }
 
 function addBatchNormBlockUi() {
+    if (flattend == true) {
+        alert("Cannot add higher dimensional layers after flatten layer");
+        return;
+    }
     numLayers += 1;
     object.layers[0][String(numLayers)] = { layerName: "batchNorm", axis: 3 };
     object.modelInfo = numLayers;
