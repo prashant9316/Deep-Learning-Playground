@@ -12,6 +12,24 @@ var layer_array = {
     ]
 };
 
+var object = {
+    "modelName": "myModel",
+    "modelType": "Sequential",
+    "modelInfo": ["3"],
+    "layers": [{
+        "1": ["Conv2D", "64", "2", "relu"],
+        "2": ["MaxPool2D", "2"],
+        "3": ["Conv2D", "64", "2", "relu"]
+    }]
+};
+
+console.log(object);
+console.log("Model type " + object.modelType + " with " + object.modelInfo + " layers");
+console.log(object.layers);
+for (i = 0; i < parseInt(object.modelInfo); i++) {
+    console.log(String(i + 1) + " layer is of " + object.layers[0][i + 1][0]);
+}
+
 container = $('#add');
 /*
 let layer = document.createElement("div");
