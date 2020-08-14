@@ -2,31 +2,16 @@ var current_layer = 0;
 var layer_counter = 0;
 var lastLayer;
 var numLayers = 0;
-var layer_array = {
-    'layers': [
-        { 'layer': ['conv2d', 32, 2, 'relu'] },
-        { 'layer': ['mp', 2] },
-        { 'layer': ['conv2d', 32, 2, 'relu'] },
-        { 'layer': ['mp', 2] },
-        { 'layer': ['flatten'] },
-        { 'layer': ['dense', 10, 'softmax'] }
-    ]
-};
+
 
 var object = {
     "modelName": "myModel",
     "modelType": "Sequential",
     "modelInfo": ["1"],
     "layers": [{
-
-        "1": { layerName: "Conv2D", filter: "64", kernel: "2", activation: "relu" }
-
+        "1": { layerName: "conv2D", filter: 64, kernel: 2, activation: "relu" }
     }]
 };
-
-console.log(object);
-console.log("Model type " + object.modelType + " with " + object.modelInfo + " layers");
-console.log(object.layers);
 
 function printModel(object) {
     for (i = 0; i < parseInt(object.modelInfo); i++) {
@@ -37,11 +22,6 @@ function printModel(object) {
 function init() {
     numLayers = 1;
     console.log("Initiated layer structure with Conv2D layer");
-    printModel(object);
-    console.log("adding maxPool layer");
-    addMaxPoolBlockUi();
-    console.log(object);
-    console.log("new layer structure is:");
     printModel(object);
 }
 container = $('#add');
@@ -64,7 +44,7 @@ container.append(layer);
 */
 function addConvBlockUi() {
     numLayers += 1;
-    object.layers[0][String(numLayers)] = { layerName: "Conv2D", filter: "64", kernel: "2", activation: "relu" };
+    object.layers[0][String(numLayers)] = { layerName: "conv2D", filter: 64, kernel: 2, activation: "relu" };
     object.modelInfo = numLayers;
     container.append(`<div class="conv-layer">
     <div class="layer-name">
@@ -93,7 +73,7 @@ function addConvBlockUi() {
 
 function addMaxPoolBlockUi() {
     numLayers += 1;
-    object.layers[0][String(numLayers)] = { layerName: "MaxPool2D", kernel: 2 };
+    object.layers[0][String(numLayers)] = { layerName: "maxPool2D", kernel: 2 };
     object.modelInfo = numLayers;
     container.append(`<div class="maxPool-layer">
         <div class="layer-name">
@@ -117,6 +97,8 @@ function addMaxPoolBlockUi() {
 
 function addFlattenBlockUi() {
     numLayers += 1;
+    object.layers[0][String(numLayers)] = { layerName: "flatten" };
+    object.modelInfo = numLayers;
     container.append(`
         <div class="flatten-layer">
             <div class="layer-name">
@@ -130,6 +112,8 @@ function addFlattenBlockUi() {
 
 function addDenseBlockUi() {
     numLayers += 1;
+    object.layers[0][String(numLayers)] = { layerName: "dense", units: 10, activation: "relu" };
+    object.modelInfo = numLayers;
     container.append(`
         <div class="dense-layer">
         <div class="layer-name">
@@ -153,11 +137,41 @@ function addDenseBlockUi() {
 
 function addDropoutBlockUi() {
     numLayers += 1;
+    object.layers[0][String(numLayers)] = { layerName: "dropout", drop: 0.2 };
+    object.modelInfo = numLayers;
+    container.append(`
+        <div class="dense-layer">
+        <div class="layer-name">
+            <div class="text-box">
+                Dropout
+            </div>
+        </div>
+        <div class="layer-property-1">
+            <div class="text-box">
+                0.2
+            </div>
+        </div>
+    </div>`);
     console.log("Build in progress!");
 }
 
 function addBatchNormBlockUi() {
     numLayers += 1;
+    object.layers[0][String(numLayers)] = { layerName: "batchNorm", axis: 3 };
+    object.modelInfo = numLayers;
+    container.append(`
+        <div class="dense-layer">
+        <div class="layer-name">
+            <div class="text-box">
+                BatchNormalization
+            </div>
+        </div>
+        <div class="layer-property-1">
+            <div class="text-box">
+                3
+            </div>
+        </div>
+    </div>`);
     console.log("Build in progress!");
 }
 

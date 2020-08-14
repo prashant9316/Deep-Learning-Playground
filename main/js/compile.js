@@ -1,28 +1,31 @@
 var firstLayer = true;
 let model;
 
-function compile(layer_array, length) {
+function compile(modelArch) {
     console.log('Starting Parsing');
-    for (i = 0; i < length; i++) {
+    console.log(modelArch);
+    for (i = 0; i < numLayers; i++) {
+        var layerInfo = modelArch.layers[0][i + 1];
         if (firstLayer) {
-            var params = layer_array.layers[i].layer;
-            console.log(params);
-            model = init_model(params);
+            console.log(layerInfo);
+            model = init_model(layerInfo);
             firstLayer = false;
         } else {
-            console.log('layer ' + String(i + 1) + ' is ' + layer_array.layers[i].layer[0]);
-            if (layer_array.layers[i].layer[0] == 'conv2d') {
-                add_conv(model, layer_array.layers[i].layer);
-            } else if (layer_array.layers[i].layer[0] == 'mp') {
-                add_mp(model, layer_array.layers[i].layer);
-            } else if (layer_array.layers[i].layer[0] == 'flatten') {
+            console.log('layer ' + String(i + 1) + ' is ' + layerInfo.layerName);
+            if (layerInfo.layerName == 'conv2D') {
+                add_conv(model, layerInfo);
+            } else if (layerInfo.layerName == 'maxPool2D') {
+                add_mp(model, layerInfo);
+            } else if (layerInfo.layerName == 'flatten') {
                 add_flatten(model);
-            } else if (layer_array.layers[i].layer[0] == 'dense') {
-                add_dense(model, layer_array.layers[i].layer);
-            } else if (layer_array.layers[i].layer[0] == 'batchNorm') {
-                add_batchnorm(model);
+            } else if (layerInfo.layerName == 'dense') {
+                add_dense(model, layerInfo);
+            } else if (layerInfo.layerName == 'batchNorm') {
+                add_batchnorm(model, layerInfo);
+            } else if (layerInfo.layerName == 'dropout') {
+                add_drop(model, layerInfo);
             } else {
-                console.error(layer_array.layers[i].layer[0] + " is not supported yet");
+                console.error(layerInfo.layerName + " is not supported yet");
                 alert("Layer is not supported yet!");
             }
         }
@@ -34,7 +37,7 @@ function compile(layer_array, length) {
 function init_model(params) {
     const model = tf.sequential({
         layers: [
-            tf.layers.conv2d({ filters: params[1], kernelSize: params[2], activation: params[3], inputShape: [32, 32, 3] })
+            tf.layers.conv2d({ filters: params.filter, kernelSize: params.kernel, activation: params.activation, inputShape: [32, 32, 3] })
         ]
     });
     console.log("Model Initialized!");
@@ -42,36 +45,30 @@ function init_model(params) {
 }
 
 function add_conv(model, params) {
-
-    console.log("Add conv activated!")
-    model.add(tf.layers.conv2d({ filters: params[1], kernelSize: params[2], activation: params[3] }));
-    console.log("Added Conv2D layer with " + params[1] + " kernels with kernel size: " + params[2] + " activated with " + params[3]);
-}
-
-function add_conv(model, params) {
-    console.log("add conv function activated!");
-    model.add(tf.layers.conv2d({ filters: params[1], kernelSize: params[2], activation: params[3] }));
+    model.add(tf.layers.conv2d({ filters: params.filter, kernelSize: params.kernel, activation: params.activation }));
     console.log("Added Conv2D layer with " + params[1] + " kernels with kernel size: " + params[2] + " activated with " + params[3]);
 }
 
 function add_mp(model, params) {
-    model.add(tf.layers.maxPooling2d({ poolSize: [params[1], params[1]] }));
-    console.log("Added MaxPooling layer with pool size: " + params[1]);
+    model.add(tf.layers.maxPooling2d({
+        poolSize: [params.kernel, params.kernel]
+    }));
+    console.log("Added MaxPooling layer with pool size: " + params.kernel);
 }
 
-function add_batchnorm(model) {
-    model.add(tf.layers.batchNormalization());
+function add_batchnorm(model, params) {
+    model.add(tf.layers.batchNormalization({ axis: params.axis }));
     console.log("Added batch normalization layer as well");
 }
 
 function add_dense(model, params) {
-    model.add(tf.layers.dense({ units: params[1], activation: params[2] }));
+    model.add(tf.layers.dense({ units: params.units, activation: params.activation }));
     console.log("Adding a Dense layer with " + params[1] + " units, activated with " + params[2]);
 }
 
 function add_drop(model, params) {
-    model.add(tf.layers.dropout());
-    console.log("Dropping some weights: " + params[1]);
+    model.add(tf.layers.dropout(params.drop));
+    console.log("Dropping some weights: " + params.drop);
 }
 
 function add_flatten(model) {
