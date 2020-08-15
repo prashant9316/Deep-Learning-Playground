@@ -67,7 +67,7 @@ function addConvBlockUi() {
         2
     </div>
 </div>
-<div class="layer-property-3">
+<div class="layer-property-2">
     <div class="text-box">
         RELU
     </div>
@@ -106,7 +106,7 @@ function addMaxPoolBlockUi() {
 
 function addFlattenBlockUi() {
     if (flattend == true) {
-        alert("Cannot add higher dimensional layers after flatten layer");
+        alert("Flatten layer is already added once.");
         return;
     }
     flattend = true;
@@ -124,6 +124,7 @@ function addFlattenBlockUi() {
     lastLayer = 'flatten-layer';
 }
 
+//Adding Dense Layer User Interface 
 function addDenseBlockUi() {
     if (flattend == false) {
         alert("The layer is not yet flattened!");
@@ -144,15 +145,16 @@ function addDenseBlockUi() {
                 10
             </div>
         </div>
-        <div class="layer-property-3">
+        <div class="layer-property-2">
             <div class="text-box">
-                SOFTMAX
+                RELU
             </div>
         </div>
     </div>`);
     lastLayer = 'dense-layer';
 }
 
+//Adding Dropout Layer User Interface
 function addDropoutBlockUi() {
     numLayers += 1;
     object.layers[0][String(numLayers)] = { layerName: "dropout", drop: 0.2 };
