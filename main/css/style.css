@@ -10,7 +10,7 @@
 /* width */
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 5px;
 }
 
 
@@ -126,7 +126,7 @@ body {
     background-color: #1E1D1D;
     text-align: center;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
 }
 

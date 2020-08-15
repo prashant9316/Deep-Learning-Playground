@@ -158,7 +158,7 @@ function addDropoutBlockUi() {
     object.layers[0][String(numLayers)] = { layerName: "dropout", drop: 0.2 };
     object.modelInfo = numLayers;
     container.append(`
-        <div class="dense-layer">
+        <div class="dropout-layer">
         <div class="layer-name">
             <div class="text-box">
                 Dropout
@@ -182,10 +182,10 @@ function addBatchNormBlockUi() {
     object.layers[0][String(numLayers)] = { layerName: "batchNorm", axis: 3 };
     object.modelInfo = numLayers;
     container.append(`
-        <div class="dense-layer">
+        <div class="batchNorm-layer">
         <div class="layer-name">
             <div class="text-box">
-                BatchNormalization
+                BatchNorm
             </div>
         </div>
         <div class="layer-property-1">

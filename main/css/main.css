@@ -1,3 +1,14 @@
+/*adding scrolling effect to the layers*/
+
+div.scroll {
+    width: max-content;
+    height: 70vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px;
+    direction: rtl;
+}
+
 .option {
     float: right;
     display: block;
@@ -83,6 +94,36 @@
 /* Dense UI design */
 
 .dense-layer {
+    height: 50px;
+    width: max-content;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #361D7D;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+
+/* BatchNormalizatoin UI design */
+
+.batchNorm-layer {
+    height: 50px;
+    width: max-content;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #361D7D;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+
+/* Dropout UI design */
+
+.dropout-layer {
     height: 50px;
     width: max-content;
     padding: 10px;

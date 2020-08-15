@@ -7,6 +7,7 @@
     <link href="main/css/main.css" rel="stylesheet" type="text/css">
     <link href="main/css/style.css" rel="stylesheet" type="text/css">
     <link href="main/css/layers.css" rel="stylesheet" type="text/css">
+    <link href="main/css/opt.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -29,7 +30,7 @@
     <div class="model-name-container">
         <div class="model-name-text">CNN Builder</div>
 
-        <div id="floating-menu">
+        <div id='floating-menu' class="menu">
             <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
             <div id="floating-menu-draggable">Layers</div>
             <input class="menu-button conv2d-layer" type="button" value="Conv2D" onclick="addConvBlockUi()">
@@ -41,55 +42,84 @@
         </div>
     </div>
     <div class="option">
+        <button class="train-button" onclick="change_menu_state()">Layers</button>
         <button class="optimize-button" onclick="compile(object)">Optimize</button>
-        <button class="train-button">Train</button>
+        <button class="train-button" onclick="document.getElementById('id01').style.display='block'">Train</button>
+    </div>
+
+
+    <!-- Adding optimizer modal to select model compile info-->
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content" action="console.log(\" Action not included yet\ ")">
+            <div class="container">
+                <h1>Model Compilation</h1>
+                <p>Choose your Model Configuration</p>
+                <hr>
+                <label for="text"><b>Optimizer</b></label>
+                <input type="text" placeholder="Optimizer" name="opt" required>
+                <input type="text" placeholder="Learning Rate" name="optlr" required>
+
+                <label for="text"><b>Loss</b></label>
+                <input type="text" placeholder="loss" name="loss" required>
+
+                <label for="text"><b>Metrics</b></label>
+                <input type="text" placeholder="accuracy" name="metrics" required>
+
+                <label>
+              <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            </label>
+
+                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+                <hr>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn">Compile</button>
+                </div>
+            </div>
+        </form>
     </div>
 
 
 
+    <div class="scroll">
+
+        <div class="first-layer">
+            <div class="layer-name">
+                <div class="text-box">
+                    Conv2D
+                </div>
+            </div>
+            <div class="layer-property-1">
+                <div class="text-box">
+                    32
+                </div>
+            </div>
+            <div class="layer-property-2">
+                <div class="text-box">
+                    2
+                </div>
+            </div>
+            <div class="layer-property-2">
+                <div class="text-box">
+                    relu
+                </div>
+            </div>
+            <div class="layer-property-4">
+                <div class="text-box">
+                    3, 32, 32
+                </div>
+            </div>
+        </div>
 
 
-    <div class="first-layer">
-        <div class="layer-name">
-            <div class="text-box">
-                Conv2D
-            </div>
-        </div>
-        <div class="layer-property-1">
-            <div class="text-box">
-                32
-            </div>
-        </div>
-        <div class="layer-property-2">
-            <div class="text-box">
-                2
-            </div>
-        </div>
-        <div class="layer-property-3">
-            <button onclick="myFunction()" class="dropbtn layer-property-3" id="output">
-                relu
-            </button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#relu" onclick="relu_option()">relu</a>
-                <a href="#tanh" onclick="tanh_option()">tanh</a>
-                <a href="#sigmoid" onclick="sigmoid_option()">sigmoid</a>
-                <a href="#softmax" onclick="softmax_option()">softmax</a>
-            </div>
-        </div>
-        <div class="layer-property-4">
-            <div class="text-box">
-                32, 32, 3
-            </div>
+
+
+        <div class="layers" id="add">
+
         </div>
     </div>
-
-
-
-
-    <div class="layers" id="add">
-
-    </div>
-
 
 </body>
 <footer>
@@ -97,6 +127,7 @@
     <script src="main/js/index.js"></script>
     <script src="main/js/main.js"></script>
     <script src="main/js/layers.js"></script>
+    <script src="main/js/opt.js"></script>
 </footer>
 
 </html>

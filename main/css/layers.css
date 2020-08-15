@@ -1,3 +1,9 @@
+.menu {
+    display: none;
+    top: 150px;
+    right: 250px;
+}
+
 #floating-menu {
     height: max-content;
     width: max-content;
